@@ -39,6 +39,7 @@ class ColorScreen {
       button.size(this.buttonWidth, this.buttonHeight);
       button.mousePressed(() => {
         this.manager.setScreen(link.target);
+        SoundManager.playSfx("testing", 0.5);
       });
       return button;
     });

@@ -1,8 +1,14 @@
 let screenManager;
 
+function preload() {
+  SoundManager.loadSfx("testing", "../assets/ahh.wav");
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   textFont("monospace");
+
+  // handle screens
 
   screenManager = new ScreenManager();
   createDemoScreens(screenManager);
@@ -16,13 +22,19 @@ function draw() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-  screenManager.resize(width, height);
+  if (screenManager) {
+    screenManager.resize(width, height);
+  }
 }
 
 function mousePressed() {
-  screenManager.mousePressed();
+  if (screenManager) {
+    screenManager.mousePressed();
+  }
 }
 
 function keyPressed() {
-  screenManager.keyPressed();
+  if (screenManager) {
+    screenManager.keyPressed();
+  }
 }
