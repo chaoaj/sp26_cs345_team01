@@ -7,6 +7,6 @@ class GameScreen extends Screen {
   draw() {
     background(0);
     fill(255);
-    text("Score: " + this.score, 20, 30);
+    text("Score: " + this.score, 100, 100);
   }
 }
