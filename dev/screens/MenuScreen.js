@@ -3,15 +3,13 @@ class MenuScreen extends Screen {
     super();
     this.wildSlideLogo = loadImage("devassets/wild_slide.png");
     this.playButton = loadImage("devassets/playbtn.png");
+    this.settingsButton = loadImage("devassets/settingsbtn.png");
+    this.exitButton = loadImage("devassets/exitbtn.png");
 
-    this.buttons = new ButtonManager();
   }
 
   onEnter() {
     console.log("Menu is now active");
-
-    // Create buttons when entering the screen
-
   }
 
   draw() {
@@ -19,26 +17,13 @@ class MenuScreen extends Screen {
 
     imageMode(CENTER);
     image(this.wildSlideLogo, width / 2, height * 0.2, this.wildSlideLogo.width * 0.7, this.wildSlideLogo.height * 0.7);
-    image(this.playButton, width / 2, height * 0.45, 199, 109)
+
+    image(this.playButton, width / 2, height * 0.45, 199, 109);
+    image(this.settingsButton, width / 2, height * 0.6, 199, 109);
+    image(this.exitButton, width / 2 + 3, height * 0.75, 199, 109);
+
   }
 
-<<<<<<< Updated upstream
-=======
-  /*
-  draw() {
-    background(30);
-    
-    imageMode(CENTER);
-    image(this.wildSlideLogo, width / 2, height * 0.3);
-
-    textAlign(CENTER, CENTER);
-    textSize(32);
-    fill(255);
-    text("Press ENTER to Play", width / 2, height / 2);
-  } 
-  */
-
->>>>>>> Stashed changes
   keyPressed() {
     if (keyCode === ENTER) {
       manager.switchTo("game");
