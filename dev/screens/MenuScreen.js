@@ -2,8 +2,8 @@ class MenuScreen extends Screen {
 
   constructor() {
     super();
-    this.mainMenuBg = loadImage("devassets/background.png")
-    this.wildSlideLogo = loadImage("devassets/wild_slide.png");
+    this.mainMenuBg = Assets.backgroundImg;
+    this.wildSlideLogo = Assets.logoImg;
     this.buttons = new ButtonManager();
 
   }
@@ -13,7 +13,7 @@ class MenuScreen extends Screen {
 
     this.buttons.clear(); // optional, if switching screens
 
-    this.buttons.add(new Button(playButton, width / 2, height * 0.45, 199, 109, () => manager.switchTo("game")))
+    this.buttons.add(new Button(Assets.playBtn, width / 2, height * 0.45, 199, 109, () => manager.switchTo("game")))
   }
 
   draw() {
