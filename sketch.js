@@ -1,5 +1,3 @@
-let screenManager;
-
 function preload() {
   SoundManager.loadSfx("testing", "assets/ahh.wav");
   SoundManager.loadMusic("bgmusic", "assets/testingbg.mp3");
