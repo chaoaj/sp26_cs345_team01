@@ -4,16 +4,14 @@ class MenuScreen extends Screen {
     super();
     this.mainMenuBg = Assets.backgroundImg;
     this.wildSlideLogo = Assets.logoImg;
-    this.buttons = new ButtonManager();
-
   }
 
   onEnter() {
     console.log("Menu is now active");
 
-    this.buttons.clear(); // optional, if switching screens
-
-    this.buttons.add(new Button(Assets.playBtn, width / 2, height * 0.45, 199, 109, () => manager.switchTo("game")))
+    this.startBtn = new Button(width * 0.5, height * 0.45, 199, 109, Assets.playBtn);
+    this.settingsBtn = new Button(width * 0.5, height * 0.6, 199, 109, Assets.settingsBtn);
+    this.exitBtn = new Button(width * 0.5, height * 0.75, 201, 109, Assets.exitBtn);
   }
 
   draw() {
@@ -23,18 +21,22 @@ class MenuScreen extends Screen {
     imageMode(CENTER);
     image(this.wildSlideLogo, width / 2, height * 0.2, this.wildSlideLogo.width * 0.7, this.wildSlideLogo.height * 0.7);
 
-    this.buttons.display();
-
+    this.startBtn.draw();
+    this.settingsBtn.draw();
+    this.exitBtn.draw();
   }
 
   keyPressed() {
     if (keyCode === ENTER) {
-      manager.switchTo("game");
-      SoundManager.playSfx("testing", 0.1);
+      manager.switchTo("game", true);
+      SoundManager.playSfx("testing", 0.5);
     }
   }
 
   mousePressed() {
-    this.buttons.handleClick();
+    if (this.startBtn.isHovered()) {
+      manager.switchTo("game", true);
+      SoundManager.playSfx("testing", 0.5);
+    }
   }
 }

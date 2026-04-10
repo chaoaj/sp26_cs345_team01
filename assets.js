@@ -7,9 +7,9 @@ const Assets = {
 };
 
 function loadAssets() {
-  Assets.playBtn = loadImage('assets/playbtn.png');
-  Assets.exitBtn = loadImage('assets/exitbtn.png');
-  Assets.settingsBtn = loadImage('assets/settingsbtn.png');
-  Assets.logoImg = loadImage('assets/wild_slide.png');
-  Assets.backgroundImg = loadImage('assets/background.png');
+  Assets.playBtn = loadImage('devassets/playbtn.png');
+  Assets.exitBtn = loadImage('devassets/exitbtn.png');
+  Assets.settingsBtn = loadImage('devassets/settingsbtn.png');
+  Assets.logoImg = loadImage('devassets/wild_slide.png');
+  Assets.backgroundImg = loadImage('devassets/background.png');
 }

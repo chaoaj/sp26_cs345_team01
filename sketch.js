@@ -1,6 +1,8 @@
+let screenManager;
+
 function preload() {
-  SoundManager.loadSfx("testing", "assets/ahh.wav");
-  SoundManager.loadMusic("bgmusic", "assets/testingbg.mp3");
+  SoundManager.loadSfx("testing", "../assets/ahh.wav");
+  SoundManager.loadMusic("bgmusic", "./devassets/testingbg.mp3");
   loadAssets();
 }
 
@@ -11,7 +13,10 @@ function setup() {
   manager.register("menu", new MenuScreen());
   manager.register("game", new GameScreen());
 
-  manager.switchTo("menu");
+  manager.fadeColor = 0;
+  manager.fadeSpeed = 20;
+
+  manager.switchTo("menu", false);
 }
 
 function draw() {
