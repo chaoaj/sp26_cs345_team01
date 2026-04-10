@@ -10,6 +10,8 @@ class MenuScreen extends Screen {
     console.log("Menu is now active");
 
     this.startBtn = new Button(width * 0.5, height * 0.45, 199, 109, Assets.playBtn);
+    this.settingsBtn = new Button(width * 0.5, height * 0.6, 199, 109, Assets.settingsBtn);
+    this.exitBtn = new Button(width * 0.5, height * 0.75, 201, 109, Assets.exitBtn);
   }
 
   draw() {
@@ -20,6 +22,8 @@ class MenuScreen extends Screen {
     image(this.wildSlideLogo, width / 2, height * 0.2, this.wildSlideLogo.width * 0.7, this.wildSlideLogo.height * 0.7);
 
     this.startBtn.draw();
+    this.settingsBtn.draw();
+    this.exitBtn.draw();
   }
 
   keyPressed() {
