@@ -12,7 +12,7 @@ class Button {
     image(this.img, this.x, this.y, this.w, this.h);
   }
 
-  isClicked() {
+  isHovered() {
     return (
       mouseX > this.x && mouseX < this.x + this.w &&
       mouseY > this.y && mouseY < this.y + this.h
