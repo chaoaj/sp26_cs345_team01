@@ -12,9 +12,6 @@ class SlidePuzzle {
     this.tiles = [];
     this.blank = { x: gridSize - 1, y: gridSize - 1 };
 
-    // Animation system
-    this.animations = [];
-
     this.createTiles();
     this.shuffle(200);
   }
@@ -30,9 +27,7 @@ class SlidePuzzle {
           x,
           y,
           correctX: x,
-          correctY: y,
-          drawX: x * this.tileSize,
-          drawY: y * this.tileSize
+          correctY: y
         });
       }
     }
@@ -42,7 +37,7 @@ class SlidePuzzle {
     for (let i = 0; i < times; i++) {
       const moves = this.getValidMoves();
       const move = random(moves);
-      this.swapTile(move.x, move.y, false);
+      this.moveTile(move.x, move.y);
     }
   }
 
@@ -58,29 +53,17 @@ class SlidePuzzle {
     return moves;
   }
 
-  swapTile(x, y, animate = true) {
+  moveTile(x, y) {
     const tile = this.tiles.find(t => t.x === x && t.y === y);
     if (!tile) return;
 
     const oldBlank = { ...this.blank };
 
-    // Update blank position
+    // Move blank into tile position
     this.blank.x = tile.x;
     this.blank.y = tile.y;
 
-    // Animate tile movement
-    if (animate) {
-      this.animations.push({
-        tile: tile,
-        startX: tile.x * this.tileSize,
-        startY: tile.y * this.tileSize,
-        endX: oldBlank.x * this.tileSize,
-        endY: oldBlank.y * this.tileSize,
-        progress: 0
-      });
-    }
-
-    // Update tile grid position
+    // Move tile into blank position
     tile.x = oldBlank.x;
     tile.y = oldBlank.y;
   }
@@ -95,7 +78,7 @@ class SlidePuzzle {
 
     if (!target) return;
 
-    this.swapTile(target.x, target.y);
+    this.moveTile(target.x, target.y);
 
     if (this.isSolved()) {
       console.log("Puzzle solved!");
@@ -109,36 +92,19 @@ class SlidePuzzle {
     return this.tiles.every(t => t.x === t.correctX && t.y === t.correctY);
   }
 
-  updateAnimations() {
-    const speed = 0.15;
-
-    this.animations = this.animations.filter(anim => {
-      anim.progress += speed;
-
-      if (anim.progress >= 1) {
-        anim.tile.drawX = anim.endX;
-        anim.tile.drawY = anim.endY;
-        return false;
-      }
-
-      anim.tile.drawX = lerp(anim.startX, anim.endX, anim.progress);
-      anim.tile.drawY = lerp(anim.startY, anim.endY, anim.progress);
-      return true;
-    });
-  }
-
   draw() {
-    this.updateAnimations();
-
     imageMode(CORNER);
 
     this.tiles.forEach(tile => {
       const sx = tile.correctX * this.sliceW;
       const sy = tile.correctY * this.sliceH;
 
+      const dx = tile.x * this.tileSize;
+      const dy = tile.y * this.tileSize;
+
       image(
         this.img,
-        tile.drawX, tile.drawY, this.tileSize, this.tileSize,
+        dx, dy, this.tileSize, this.tileSize,
         sx, sy, this.sliceW, this.sliceH
       );
     });

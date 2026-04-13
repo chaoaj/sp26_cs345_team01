@@ -13,7 +13,7 @@ class GameScreen extends Screen {
       level.grid,
       Assets.levelImages[level.id],
       150,
-      () => this.onPuzzleSolved()   // callback
+      () => this.onPuzzleSolved()
     );
   }
 
