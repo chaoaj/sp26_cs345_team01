@@ -1,8 +1,8 @@
 class Screen {
-  onEnter() { }   // called once when this screen becomes active
-  onExit() { }   // called once when leaving this screen
-  draw() { }   // called every frame
-  keyPressed() { } // optional input hooks
+  onEnter() { }
+  onExit() { }
+  draw() { }
+  keyPressed() { }
   mousePressed() { }
 }
 
@@ -22,16 +22,16 @@ class ScreenManager {
   }
 
   switchTo(name, useSmoothTransition) {
-  if (useSmoothTransition) {
-    this.nextScreen = name;
-    this.fading = true;
-    this.fadeAlpha = 0;
-  } else {
-    if (this.current) this.current.onExit();
-    this.current = this.screens[name];
-    this.current.onEnter();
+    if (useSmoothTransition) {
+      this.nextScreen = name;
+      this.fading = true;
+      this.fadeAlpha = 0;
+    } else {
+      if (this.current) this.current.onExit();
+      this.current = this.screens[name];
+      this.current.onEnter();
+    }
   }
-}
 
   draw() {
     if (this.current) this.current.draw();
@@ -53,7 +53,9 @@ class ScreenManager {
     }
   }
 
-  keyPressed() { if (this.current) this.current.keyPressed(); }
+  keyPressed() {
+    if (this.current) this.current.keyPressed();
+  }
 
   mousePressed() {
     if (this.fading) return;

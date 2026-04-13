@@ -25,7 +25,7 @@ class MenuScreen extends Screen {
 
   mousePressed() {
     if (this.startBtn.isHovered()) {
-      manager.switchTo("game1", true);
+      manager.switchTo("game1", true);  // FIXED
       SoundManager.playSfx("testing", 0.5);
     }
   }
