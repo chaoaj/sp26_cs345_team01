@@ -1,7 +1,7 @@
 class MenuScreen extends Screen {
-
   constructor() {
     super();
+
     this.mainMenuBg = Assets.backgroundImg;
     this.wildSlideLogo = Assets.logoImg;
     this.tree1Img = Assets.tree1Img;
@@ -22,6 +22,7 @@ class MenuScreen extends Screen {
 
   draw() {
     imageMode(CENTER);
+
     image(
       this.mainMenuBg,
       width / 2,
@@ -29,6 +30,7 @@ class MenuScreen extends Screen {
       this.mainMenuBg.width * 0.8,
       this.mainMenuBg.height * 0.8
     );
+
     this.treeOffset += 0.01;
     this.leafOffset += 0.04;
     let treeWind = Math.sin(this.treeOffset) * 2;
@@ -70,14 +72,14 @@ class MenuScreen extends Screen {
 
   keyPressed() {
     if (keyCode === ENTER) {
-      manager.switchTo("game", true);
+      manager.switchTo("game1", true);
       SoundManager.playSfx("testing", 0.5);
     }
   }
 
   mousePressed() {
     if (this.startBtn.isHovered()) {
-      manager.switchTo("game", true);
+      manager.switchTo("game1", true);
       SoundManager.playSfx("testing", 0.5);
     }
   }

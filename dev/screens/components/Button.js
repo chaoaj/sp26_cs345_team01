@@ -14,8 +14,10 @@ class Button {
 
   isHovered() {
     return (
-      mouseX > this.x && mouseX < this.x + this.w &&
-      mouseY > this.y && mouseY < this.y + this.h
+      mouseX > this.x - this.w / 2 &&
+      mouseX < this.x + this.w / 2 &&
+      mouseY > this.y - this.h / 2 &&
+      mouseY < this.y + this.h / 2
     );
   }
 }
