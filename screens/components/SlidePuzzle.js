@@ -68,10 +68,10 @@ class SlidePuzzle {
   handleInput(key) {
     let target = null;
 
-    if (key === 'ArrowDown') target = { x: this.blank.x, y: this.blank.y - 1 };
-    if (key === 'ArrowUp') target = { x: this.blank.x, y: this.blank.y + 1 };
-    if (key === 'ArrowRight') target = { x: this.blank.x - 1, y: this.blank.y };
-    if (key === 'ArrowLeft') target = { x: this.blank.x + 1, y: this.blank.y };
+    if (key === 'ArrowDown' || key === 's') target = { x: this.blank.x, y: this.blank.y - 1 };
+    if (key === 'ArrowUp' || key === 'w') target = { x: this.blank.x, y: this.blank.y + 1 };
+    if (key === 'ArrowRight' || key === 'd') target = { x: this.blank.x - 1, y: this.blank.y };
+    if (key === 'ArrowLeft' || key === 'a') target = { x: this.blank.x + 1, y: this.blank.y };
 
     if (!target) return;
 
