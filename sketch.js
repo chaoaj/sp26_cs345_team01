@@ -1,5 +1,3 @@
-let screenManager;
-
 function preload() {
   SoundManager.loadSfx("testing", "./assets/ahh.wav");
   SoundManager.loadMusic("bgmusic", "./assets/testingbg.mp3");
@@ -11,7 +9,8 @@ function setup() {
   textFont("monospace");
 
   manager.register("menu", new MenuScreen());
-  manager.register("game", new GameScreen());
+  manager.register("game1", new GameScreen(1));
+  manager.register("game2", new GameScreen(2));
 
   manager.fadeColor = 0;
   manager.fadeSpeed = 20;
