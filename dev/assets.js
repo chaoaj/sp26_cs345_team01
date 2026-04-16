@@ -15,7 +15,7 @@ function loadAssets() {
   Assets.exitBtn = loadImage('assets/ui-assets/exitbtn.png');
   Assets.settingsBtn = loadImage('assets/ui-assets/settingsbtn.png');
 
-  Assets.logoImg = loadImage('assets/decoratives/wild_slide.png'); // LEFT OFF HERE
+  Assets.logoImg = loadImage('assets/decoratives/wildslidelogo2.png'); // LEFT OFF HERE
   Assets.backgroundImg = loadImage('assets/decoratives/background.png');
   Assets.tree1Img = loadImage('assets/decoratives/tree1.png');
   Assets.tree2Img = loadImage('assets/decoratives/tree2.png');
