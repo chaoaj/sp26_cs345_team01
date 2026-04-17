@@ -10,14 +10,15 @@ class MenuScreen extends Screen {
     this.treeOffset = 0;
     this.leafOffset = 0;
     this.treeScale = 0.57;
+    this.buttonW = 199;
+    this.buttonH = 109
   }
 
   onEnter() {
     console.log("Menu is now active");
 
-    this.startBtn = new Button(width * 0.5, height * 0.45, 199, 109, Assets.playBtn);
+    this.startBtn = new Button(width * 0.5, height * 0.45, 199, 109, Assets.playBtn); // 219, 129
     this.settingsBtn = new Button(width * 0.5, height * 0.6, 199, 109, Assets.settingsBtn);
-    this.exitBtn = new Button(width * 0.5, height * 0.75, 201, 109, Assets.exitBtn);
   }
 
   draw() {
@@ -39,7 +40,6 @@ class MenuScreen extends Screen {
     let tree1H = this.tree1Img.height * this.treeScale;
     let tree2W = this.tree2Img.width * this.treeScale;
     let tree2H = this.tree2Img.height * this.treeScale;
-
     image(
       this.tree1Img,
       -70 + treeWind,
@@ -47,7 +47,6 @@ class MenuScreen extends Screen {
       tree1W,
       tree1H
     );
-
     image(
       this.tree2Img,
       width - tree2W + 70 + treeWind,
@@ -55,7 +54,6 @@ class MenuScreen extends Screen {
       tree2W,
       tree2H
     );
-
     image(
       this.leavesImg,
       leafWind,
@@ -63,16 +61,15 @@ class MenuScreen extends Screen {
       width,
       height
     );
-    
     image(this.mainMenuBg, width / 2, height / 2, this.mainMenuBg.width * 0.8, this.mainMenuBg.height * 0.8)
 
     imageMode(CENTER);
-    image(this.wildSlideLogo, width / 2, height * 0.2, this.wildSlideLogo.width * 0.7, this.wildSlideLogo.height * 0.7);
+    image(this.wildSlideLogo, width / 2, height * 0.3, this.wildSlideLogo.width, this.wildSlideLogo.height);
 
     this.startBtn.draw();
     this.settingsBtn.draw();
-    this.exitBtn.draw();
-  }
+
+  }  
 
   keyPressed() {
     if (keyCode === ENTER) {
