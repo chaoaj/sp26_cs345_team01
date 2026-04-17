@@ -83,5 +83,8 @@ class MenuScreen extends Screen {
       manager.switchTo("game1", true);
       SoundManager.playSfx("testing", 0.5);
     }
+    if (this.settingsBtn.isHovered()) {
+      manager.switchTo("settings", true);
+    }
   }
 }
