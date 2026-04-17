@@ -2,6 +2,8 @@ class GameScreen extends Screen {
   constructor(levelId = 1) {
     super();
     this.levelId = levelId;
+    this.showPopup = false;
+    this.timer = 0;
   }
 
   onEnter() {
@@ -18,14 +20,14 @@ class GameScreen extends Screen {
   }
 
   onPuzzleSolved() {
-    console.log("Level complete!");
-
     if (this.levelId === 1) {
-      manager.switchTo("game2", true);
+      //manager.switchTo("game2", true);
+      manager.register("win", new WinScreen(this.timer, this.levelId + 1));
+      manager.switchTo("win", true);
     } else {
       console.log("No more levels!");
     }
-  }
+  }  
 
   draw() {
     imageMode(CORNER);
@@ -38,9 +40,18 @@ class GameScreen extends Screen {
     );
     this.puzzle.draw();
     pop();
+
+    // add to timer
+    if(frameCount % 60 == 0) {
+      this.timer++;
+    }
   }
 
   keyPressed() {
+    if (keyCode === ENTER) {
+      manager.register("win", new WinScreen(this.timer, this.levelId + 1));
+      manager.switchTo("win", true);
+    }
     this.puzzle.handleInput(key);
   }
 }
