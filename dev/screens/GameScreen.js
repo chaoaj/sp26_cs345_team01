@@ -17,6 +17,8 @@ class GameScreen extends Screen {
       150,
       () => this.onPuzzleSolved()
     );
+
+    this.xBtn = new Button(40, 40, 252 * 0.3, 229 * 0.3, Assets.xBtn);
   }
 
   onPuzzleSolved() {
@@ -41,6 +43,8 @@ class GameScreen extends Screen {
     this.puzzle.draw();
     pop();
 
+    this.xBtn.update();
+
     // add to timer
     if(frameCount % 60 == 0) {
       this.timer++;
@@ -53,5 +57,11 @@ class GameScreen extends Screen {
       manager.switchTo("win", true);
     }
     this.puzzle.handleInput(key);
+  }
+
+  mousePressed() {
+    if (this.xBtn.isHovered()) {
+      manager.switchTo("menu", true);
+    }
   }
 }
