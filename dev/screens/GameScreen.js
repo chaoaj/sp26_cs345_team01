@@ -35,6 +35,9 @@ class GameScreen extends Screen {
     imageMode(CORNER);
     image(Assets.backgroundImg, 0, 0, width, height);
 
+    fill(0, 150);
+    rect(0, 0, width, height);
+
     push();
     translate(
       width / 2 - (this.puzzle.gridSize * this.puzzle.tileSize) / 2,
