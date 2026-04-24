@@ -32,7 +32,7 @@ class WinScreen extends Screen {
     fill(0, 150);
     rect(0, 0, width, height);
 
-    fill(209, 246, 168);
+    fill(209, 246, 168); //#D1F6A8
     rect(width / 2 - 150, height / 2 - 180, 300, 400, 10);
 
     // text

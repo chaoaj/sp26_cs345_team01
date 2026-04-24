@@ -25,6 +25,8 @@ class SlidePuzzle {
         this.tiles.push({
           x,
           y,
+          displayX: x,
+          displayY: y,
           correctX: x,
           correctY: y
         });
@@ -93,11 +95,14 @@ class SlidePuzzle {
     imageMode(CORNER);
 
     this.tiles.forEach(tile => {
+      tile.displayX = lerp(tile.displayX, tile.x, 0.35);
+      tile.displayY = lerp(tile.displayY, tile.y, 0.35);
+
       const sx = tile.correctX * this.sliceW;
       const sy = tile.correctY * this.sliceH;
 
-      const dx = tile.x * this.tileSize;
-      const dy = tile.y * this.tileSize;
+      const dx = tile.displayX * this.tileSize;
+      const dy = tile.displayY * this.tileSize;
 
       image(
         this.img,
@@ -106,7 +111,7 @@ class SlidePuzzle {
       );
     });
 
-    fill(50);
+    noFill();
     noStroke();
     rect(
       this.blank.x * this.tileSize,

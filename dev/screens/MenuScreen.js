@@ -17,8 +17,8 @@ class MenuScreen extends Screen {
   onEnter() {
     console.log("Menu is now active");
 
-    this.startBtn = new Button(width * 0.5, height * 0.45, 199, 109, Assets.playBtn); // 219, 129
-    this.settingsBtn = new Button(width * 0.5, height * 0.6, 199, 109, Assets.settingsBtn);
+    this.startBtn = new Button(width * 0.5, height * 0.45, 246 * 0.9, 119 * 0.9, Assets.playBtn);
+    this.settingsBtn = new Button(width * 0.5, height * 0.6, 236 * 0.9, 119 * 0.9, Assets.settingsBtn);
   }
 
   draw() {
@@ -66,9 +66,8 @@ class MenuScreen extends Screen {
     imageMode(CENTER);
     image(this.wildSlideLogo, width / 2, height * 0.3, this.wildSlideLogo.width, this.wildSlideLogo.height);
 
-    this.startBtn.draw();
-    this.settingsBtn.draw();
-
+    this.startBtn.update();
+    this.settingsBtn.update();
   }  
 
   keyPressed() {
@@ -82,6 +81,9 @@ class MenuScreen extends Screen {
     if (this.startBtn.isHovered()) {
       manager.switchTo("game1", true);
       SoundManager.playSfx("testing", 0.5);
+    }
+    if (this.settingsBtn.isHovered()) {
+      manager.switchTo("settings", true);
     }
   }
 }

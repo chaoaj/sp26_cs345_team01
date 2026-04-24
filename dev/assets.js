@@ -12,8 +12,8 @@ const Assets = {
 
 function loadAssets() {
   Assets.playBtn = loadImage('assets/ui-assets/playbtn.png');
-  Assets.exitBtn = loadImage('assets/ui-assets/exitbtn.png');
   Assets.settingsBtn = loadImage('assets/ui-assets/settingsbtn.png');
+  Assets.xBtn = loadImage('assets/ui-assets/xBtn.png');
 
   Assets.logoImg = loadImage('assets/decoratives/wildslidelogo2.png'); // LEFT OFF HERE
   Assets.backgroundImg = loadImage('assets/decoratives/background.png');

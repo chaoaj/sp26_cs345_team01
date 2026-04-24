@@ -106,8 +106,7 @@ class SlidePuzzle {
       );
     });
 
-    fill(50);
-    noStroke();
+    noFill();
     rect(
       this.blank.x * this.tileSize,
       this.blank.y * this.tileSize,
