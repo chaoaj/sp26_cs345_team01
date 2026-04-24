@@ -7,6 +7,7 @@ const Assets = {
   tree1Img: null,
   tree2Img: null,
   leavesImg: null,
+  animalsImg: null,
   levelImages: {}
 };
 
@@ -20,6 +21,7 @@ function loadAssets() {
   Assets.tree1Img = loadImage('assets/decoratives/tree1.png');
   Assets.tree2Img = loadImage('assets/decoratives/tree2.png');
   Assets.leavesImg = loadImage('assets/decoratives/leaves.png');
+  Assets.animalsImg = loadImage('assets/decoratives/animals.png');
   Assets.stars3 = loadImage('assets/decoratives/stars3.png');
   Assets.stars2 = loadImage('assets/decoratives/stars2.png');
   Assets.stars1 = loadImage('assets/decoratives/stars1.png');

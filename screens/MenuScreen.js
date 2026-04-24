@@ -1,6 +1,7 @@
 class MenuScreen extends Screen {
   constructor() {
     super();
+
     this.mainMenuBg = Assets.backgroundImg;
     this.wildSlideLogo = Assets.logoImg;
     this.tree1Img = Assets.tree1Img;
@@ -96,8 +97,8 @@ class MenuScreen extends Screen {
       this.wildSlideLogo.width,
       this.wildSlideLogo.height
     );
-    this.startBtn.draw();
-    this.settingsBtn.draw();
+    this.startBtn.update();
+    this.settingsBtn.update();
 
   }
 

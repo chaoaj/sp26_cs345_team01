@@ -12,6 +12,7 @@ function setup() {
   manager.register("menu", new MenuScreen());
   manager.register("game1", new GameScreen(1));
   manager.register("game2", new GameScreen(2));
+  manager.register("settings", new SettingsScreen());
 
   manager.fadeColor = 0;
   manager.fadeSpeed = 20;

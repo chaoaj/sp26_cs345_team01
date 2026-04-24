@@ -9,9 +9,11 @@ class MenuScreen extends Screen {
     this.leavesImg = Assets.leavesImg;
     this.treeOffset = 0;
     this.leafOffset = 0;
-    this.treeScale = 0.57;
-    this.buttonW = 199;
-    this.buttonH = 109
+    this.treeScale = 0.78;
+    this.animalsImg = Assets.animalsImg;
+    this.animalOffset = 0;
+    this.animalScale = 0.7;
+    this.animalBounceAmp = 5;
   }
 
   onEnter() {
@@ -22,20 +24,12 @@ class MenuScreen extends Screen {
   }
 
   draw() {
-    imageMode(CENTER);
-
-    image(
-      this.mainMenuBg,
-      width / 2,
-      height / 2,
-      this.mainMenuBg.width * 0.8,
-      this.mainMenuBg.height * 0.8
-    );
-
+    imageMode(CORNER);
+    image(this.mainMenuBg, 0, 0, width, height);
     this.treeOffset += 0.01;
     this.leafOffset += 0.04;
-    let treeWind = Math.sin(this.treeOffset) * 2;
-    let leafWind = Math.sin(this.leafOffset) * 3;
+    let treeWind = Math.sin(this.treeOffset) * 17;
+    let leafWind = Math.sin(this.leafOffset) * 10;
     let tree1W = this.tree1Img.width * this.treeScale;
     let tree1H = this.tree1Img.height * this.treeScale;
     let tree2W = this.tree2Img.width * this.treeScale;
@@ -43,28 +37,50 @@ class MenuScreen extends Screen {
     image(
       this.tree1Img,
       -70 + treeWind,
-      height - tree1H,
+      height - tree1H * 0.95,
       tree1W,
       tree1H
     );
     image(
       this.tree2Img,
       width - tree2W + 70 + treeWind,
-      height - tree2H,
+      height - tree2H * 0.95,
       tree2W,
       tree2H
     );
     image(
       this.leavesImg,
-      leafWind,
-      0,
-      width,
-      height
+      leafWind - 20,
+      -10,
+      width + 35,
+      height + 15
     );
-    image(this.mainMenuBg, width / 2, height / 2, this.mainMenuBg.width * 0.8, this.mainMenuBg.height * 0.8)
+
+    this.animalOffset += 0.03;
+    let animalBounce = Math.sin(this.animalOffset) * this.animalBounceAmp;
+    let animalDrift = Math.sin(this.animalOffset * 0.5) * 3;
+
+    if (this.animalsImg) {
+      imageMode(CENTER);
+      let animalW = this.animalsImg.width * this.animalScale;
+      let animalH = this.animalsImg.height * this.animalScale;
+      image(
+        this.animalsImg,
+        width / 2 + animalDrift,
+        height - animalH * 0.49 + animalBounce,
+        animalW,
+        animalH
+      );
+    }
 
     imageMode(CENTER);
-    image(this.wildSlideLogo, width / 2, height * 0.3, this.wildSlideLogo.width, this.wildSlideLogo.height);
+    image(
+      this.wildSlideLogo,
+      width / 2,
+      height * 0.3,
+      this.wildSlideLogo.width,
+      this.wildSlideLogo.height
+    );
 
     this.startBtn.update();
     this.settingsBtn.update();
