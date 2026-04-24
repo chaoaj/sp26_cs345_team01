@@ -31,7 +31,7 @@ class GameScreen extends Screen {
 
   draw() {
     imageMode(CORNER);
-    image(Assets.backgroundImg, 0, 0, width, height);
+    image(Assets.gamebackgroundImg, 0, 0, width, height);
 
     push();
     translate(
