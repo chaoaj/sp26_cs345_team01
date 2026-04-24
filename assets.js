@@ -23,6 +23,7 @@ function loadAssets() {
   Assets.stars3 = loadImage('assets/decoratives/stars3.png');
   Assets.stars2 = loadImage('assets/decoratives/stars2.png');
   Assets.stars1 = loadImage('assets/decoratives/stars1.png');
+  Assets.animalsImg = loadImage('assets/decoratives/animals.png');
 
   Levels.forEach(level => {
     Assets.levelImages[level.id] = loadImage(level.image);

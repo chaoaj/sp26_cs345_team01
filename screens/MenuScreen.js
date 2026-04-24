@@ -9,6 +9,10 @@ class MenuScreen extends Screen {
     this.treeOffset = 0;
     this.leafOffset = 0;
     this.treeScale = 0.78;
+    this.animalsImg = Assets.animalsImg;
+    this.animalOffset = 0;
+    this.animalScale = 0.7;
+    this.animalBounceAmp = 5;
   }
 
   onEnter() {
@@ -65,6 +69,25 @@ class MenuScreen extends Screen {
       width + 35,
       height + 15
     );
+    this.animalOffset += 0.03;
+
+    let animalBounce = Math.sin(this.animalOffset) * this.animalBounceAmp;
+    let animalDrift = Math.sin(this.animalOffset * 0.5) * 3;
+
+    if (this.animalsImg) {
+      imageMode(CENTER);
+
+      let animalW = this.animalsImg.width * this.animalScale;
+      let animalH = this.animalsImg.height * this.animalScale;
+
+      image(
+        this.animalsImg,
+        width / 2 + animalDrift,
+        height - animalH * 0.49 + animalBounce,
+        animalW,
+        animalH
+      );
+    }
     imageMode(CENTER);
     image(
       this.wildSlideLogo,
@@ -75,6 +98,7 @@ class MenuScreen extends Screen {
     );
     this.startBtn.draw();
     this.settingsBtn.draw();
+
   }
 
   keyPressed() {
