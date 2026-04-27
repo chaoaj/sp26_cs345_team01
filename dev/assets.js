@@ -18,6 +18,7 @@ function loadAssets() {
 
   Assets.logoImg = loadImage('assets/decoratives/wildslidelogo2.png'); // LEFT OFF HERE
   Assets.backgroundImg = loadImage('assets/decoratives/background.png');
+  Assets.gameBgImg = loadImage('assets/decoratives/gamebackground.png');
   Assets.tree1Img = loadImage('assets/decoratives/tree1.png');
   Assets.tree2Img = loadImage('assets/decoratives/tree2.png');
   Assets.leavesImg = loadImage('assets/decoratives/leaves.png');
