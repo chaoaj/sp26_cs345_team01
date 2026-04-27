@@ -7,7 +7,7 @@ class GameScreen extends Screen {
   }
 
   onEnter() {
-    SoundManager.playMusic("bgmusic", 0.5);
+    SoundManager.playMusic("bgmusic", window.gameVolume ?? 1);
 
     const level = Levels.find(l => l.id === this.levelId);
 
@@ -17,23 +17,16 @@ class GameScreen extends Screen {
       150,
       () => this.onPuzzleSolved()
     );
-
-    this.xBtn = new Button(40, 40, 252 * 0.3, 229 * 0.3, Assets.xBtn);
   }
 
   onPuzzleSolved() {
-    if (this.levelId === 1) {
-      //manager.switchTo("game2", true);
-      manager.register("win", new WinScreen(this.timer, this.levelId + 1));
-      manager.switchTo("win", true);
-    } else {
-      console.log("No more levels!");
-    }
-  }  
+    manager.register("win", new WinScreen(this.timer, this.levelId + 1));
+    manager.switchTo("win", true);
+  }
 
   draw() {
     imageMode(CORNER);
-    image(Assets.gameBgImg, 0, 0, width, height);
+    image(Assets.gamebackgroundImg, 0, 0, width, height);
 
     push();
     translate(
@@ -43,26 +36,26 @@ class GameScreen extends Screen {
     this.puzzle.draw();
     pop();
 
-    this.xBtn.update();
-
-    // add to timer
-    if(frameCount % 60 == 0) {
+    if (frameCount % 60 === 0) {
       this.timer++;
     }
   }
 
   keyPressed() {
+    // RIGHT SHIFT → return to menu
+    if (keyCode === SHIFT && key === "Shift") {
+      manager.switchTo("menu", true);
+      return;
+    }
+
+    // ENTER → skip level
     if (keyCode === ENTER) {
       manager.register("win", new WinScreen(this.timer, this.levelId + 1));
       manager.switchTo("win", true);
+      return;
     }
-    this.puzzle.handleInput(key);
-  }
 
-  mousePressed() {
-    if (this.xBtn.isHovered()) {
-      SoundManager.playSfx();
-      manager.switchTo("menu", true);
-    }
+    // Normal puzzle controls
+    this.puzzle.handleInput(key);
   }
 }

@@ -19,21 +19,38 @@ class MenuScreen extends Screen {
   onEnter() {
     console.log("Menu is now active");
 
-    this.startBtn = new Button(width * 0.5, height * 0.45, 246 * 0.9, 119 * 0.9, Assets.playBtn);
-    this.settingsBtn = new Button(width * 0.5, height * 0.6, 236 * 0.9, 119 * 0.9, Assets.settingsBtn);
+    this.startBtn = new Button(
+      width * 0.5,
+      height * 0.45,
+      246 * 0.9,
+      119 * 0.9,
+      Assets.playBtn
+    );
+
+    this.settingsBtn = new Button(
+      width * 0.5,
+      height * 0.6,
+      236 * 0.9,
+      119 * 0.9,
+      Assets.settingsBtn
+    );
   }
 
   draw() {
     imageMode(CORNER);
     image(this.mainMenuBg, 0, 0, width, height);
+
+    // Tree sway animation
     this.treeOffset += 0.01;
     this.leafOffset += 0.04;
     let treeWind = Math.sin(this.treeOffset) * 17;
     let leafWind = Math.sin(this.leafOffset) * 10;
+
     let tree1W = this.tree1Img.width * this.treeScale;
     let tree1H = this.tree1Img.height * this.treeScale;
     let tree2W = this.tree2Img.width * this.treeScale;
     let tree2H = this.tree2Img.height * this.treeScale;
+
     image(
       this.tree1Img,
       -70 + treeWind,
@@ -41,6 +58,7 @@ class MenuScreen extends Screen {
       tree1W,
       tree1H
     );
+
     image(
       this.tree2Img,
       width - tree2W + 70 + treeWind,
@@ -48,6 +66,8 @@ class MenuScreen extends Screen {
       tree2W,
       tree2H
     );
+
+    // Leaves drift
     image(
       this.leavesImg,
       leafWind - 20,
@@ -56,6 +76,7 @@ class MenuScreen extends Screen {
       height + 15
     );
 
+    // Animal bounce animation
     this.animalOffset += 0.03;
     let animalBounce = Math.sin(this.animalOffset) * this.animalBounceAmp;
     let animalDrift = Math.sin(this.animalOffset * 0.5) * 3;
@@ -64,6 +85,7 @@ class MenuScreen extends Screen {
       imageMode(CENTER);
       let animalW = this.animalsImg.width * this.animalScale;
       let animalH = this.animalsImg.height * this.animalScale;
+
       image(
         this.animalsImg,
         width / 2 + animalDrift,
@@ -73,6 +95,7 @@ class MenuScreen extends Screen {
       );
     }
 
+    // Logo
     imageMode(CENTER);
     image(
       this.wildSlideLogo,
@@ -82,9 +105,10 @@ class MenuScreen extends Screen {
       this.wildSlideLogo.height
     );
 
-    this.startBtn.update();
-    this.settingsBtn.update();
-  }  
+    // Draw buttons
+    this.startBtn.draw();
+    this.settingsBtn.draw();
+  }
 
   keyPressed() {
     if (keyCode === ENTER) {
@@ -98,8 +122,10 @@ class MenuScreen extends Screen {
       manager.switchTo("game1", true);
       SoundManager.playSfx("testing", 0.5);
     }
+
     if (this.settingsBtn.isHovered()) {
       manager.switchTo("settings", true);
+      SoundManager.playSfx("testing", 0.5);
     }
   }
 }

@@ -80,9 +80,7 @@ class SlidePuzzle {
     this.moveTile(target.x, target.y);
 
     if (this.isSolved()) {
-      console.log("Puzzle solved!");
       SoundManager.playSfx("testing", 0.7);
-
       if (this.onSolved) this.onSolved();
     }
   }
@@ -109,8 +107,29 @@ class SlidePuzzle {
         dx, dy, this.tileSize, this.tileSize,
         sx, sy, this.sliceW, this.sliceH
       );
+
+      // NUMBERS MODE — FIXED
+      if (window.numbersMode) {
+        // Skip blank tile
+        if (!(tile.x === this.blank.x && tile.y === this.blank.y)) {
+          push();
+          fill(0);
+          textSize(28);
+          textAlign(RIGHT, TOP);
+
+          let tileNumber = tile.correctY * this.gridSize + tile.correctX + 1;
+
+          text(
+            tileNumber,
+            dx + this.tileSize - 6,
+            dy + 4
+          );
+          pop();
+        }
+      }
     });
 
+    // Invisible blank tile
     noFill();
     noStroke();
     rect(
