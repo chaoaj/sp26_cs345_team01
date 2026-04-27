@@ -61,6 +61,7 @@ class GameScreen extends Screen {
 
   mousePressed() {
     if (this.xBtn.isHovered()) {
+      SoundManager.playSfx();
       manager.switchTo("menu", true);
     }
   }
