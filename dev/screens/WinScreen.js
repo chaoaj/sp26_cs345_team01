@@ -4,7 +4,7 @@ class WinScreen extends Screen {
     this.winTitles = ["Nice!", "Fantastic!", "Awesome!"];
     this.winTitle = random(this.winTitles);
     this.playTime = playTime;
-    this.nextLevel = str(nextLevel)
+    this.nextLevel = int(nextLevel);
   }
 
   onEnter() {
@@ -12,8 +12,8 @@ class WinScreen extends Screen {
 
     this.button = createButton("Continue");
     this.button.mousePressed(() => {
-      //manager.switchTo("game2", true);
-      manager.switchTo("game" + this.nextLevel, true);
+      manager.register("game", new GameScreen(this.nextLevel));
+      manager.switchTo("game", true);
     });
   }
 
@@ -25,17 +25,15 @@ class WinScreen extends Screen {
   }
 
   draw() {
-    // background
     imageMode(CORNER);
     image(Assets.backgroundImg, 0, 0, width, height);
 
     fill(0, 150);
     rect(0, 0, width, height);
 
-    fill(209, 246, 168); //#D1F6A8
+    fill(209, 246, 168);
     rect(width / 2 - 150, height / 2 - 180, 300, 400, 10);
 
-    // text
     fill(0);
     textAlign(CENTER, CENTER);
 
@@ -57,6 +55,7 @@ class WinScreen extends Screen {
     imageMode(CENTER);
     let starsW = Assets.stars3.width;
     let starsH = Assets.stars3.height;
+
     if (this.playTime <= 300) {
       image(Assets.stars3, width / 2, height / 2, starsW * 0.3, starsH * 0.3);
     }
