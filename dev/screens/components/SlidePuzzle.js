@@ -1,9 +1,12 @@
 class SlidePuzzle {
-  constructor(gridSize, img, tileSize = 150, onSolved = null) {
+  constructor(gridSize, img, tileSize = 150, onSolved = null, rotateTiles = false, rotateCount = 0) {
     this.gridSize = gridSize;
     this.img = img;
     this.tileSize = tileSize;
     this.onSolved = onSolved;
+
+    this.rotateTiles = rotateTiles;
+    this.rotateCount = rotateCount;
 
     this.sliceW = this.img.width / this.gridSize;
     this.sliceH = this.img.height / this.gridSize;
@@ -12,6 +15,11 @@ class SlidePuzzle {
     this.blank = { x: gridSize - 1, y: gridSize - 1 };
 
     this.createTiles();
+
+    if (this.rotateTiles && this.rotateCount > 0) {
+      this.applyRandomRotations();
+    }
+
     this.shuffle(200);
   }
 
@@ -28,9 +36,22 @@ class SlidePuzzle {
           displayX: x,
           displayY: y,
           correctX: x,
-          correctY: y
+          correctY: y,
+          rotation: 0,
+          targetRotation: 0
         });
       }
+    }
+  }
+
+  applyRandomRotations() {
+    let indices = [...Array(this.tiles.length).keys()];
+    indices.sort(() => Math.random() - 0.5);
+
+    for (let i = 0; i < this.rotateCount; i++) {
+      let tile = this.tiles[indices[i]];
+      tile.rotation = 180;
+      tile.targetRotation = 180;
     }
   }
 
@@ -85,8 +106,22 @@ class SlidePuzzle {
     }
   }
 
+  mousePressed(mx, my) {
+    const gx = floor(mx / this.tileSize);
+    const gy = floor(my / this.tileSize);
+
+    const tile = this.tiles.find(t => t.x === gx && t.y === gy);
+    if (!tile) return;
+
+    tile.targetRotation = tile.targetRotation === 0 ? 180 : 0;
+  }
+
   isSolved() {
-    return this.tiles.every(t => t.x === t.correctX && t.y === t.correctY);
+    return this.tiles.every(t =>
+      t.x === t.correctX &&
+      t.y === t.correctY &&
+      Math.abs(t.rotation) < 1
+    );
   }
 
   draw() {
@@ -96,40 +131,42 @@ class SlidePuzzle {
       tile.displayX = lerp(tile.displayX, tile.x, 0.35);
       tile.displayY = lerp(tile.displayY, tile.y, 0.35);
 
+      tile.rotation = lerp(tile.rotation, tile.targetRotation, 0.25);
+
       const sx = tile.correctX * this.sliceW;
       const sy = tile.correctY * this.sliceH;
 
       const dx = tile.displayX * this.tileSize;
       const dy = tile.displayY * this.tileSize;
 
+      push();
+      translate(dx + this.tileSize / 2, dy + this.tileSize / 2);
+      rotate(radians(tile.rotation));
+
       image(
         this.img,
-        dx, dy, this.tileSize, this.tileSize,
+        -this.tileSize / 2, -this.tileSize / 2,
+        this.tileSize, this.tileSize,
         sx, sy, this.sliceW, this.sliceH
       );
 
-      // NUMBERS MODE — FIXED
-      if (window.numbersMode) {
-        // Skip blank tile
-        if (!(tile.x === this.blank.x && tile.y === this.blank.y)) {
-          push();
-          fill(0);
-          textSize(28);
-          textAlign(RIGHT, TOP);
+      if (window.numbersMode && !(tile.x === this.blank.x && tile.y === this.blank.y)) {
+        fill(0);
+        textSize(28);
+        textAlign(RIGHT, TOP);
 
-          let tileNumber = tile.correctY * this.gridSize + tile.correctX + 1;
+        let tileNumber = tile.correctY * this.gridSize + tile.correctX + 1;
 
-          text(
-            tileNumber,
-            dx + this.tileSize - 6,
-            dy + 4
-          );
-          pop();
-        }
+        text(
+          tileNumber,
+          this.tileSize / 2 - 6,
+          -this.tileSize / 2 + 4
+        );
       }
+
+      pop();
     });
 
-    // Invisible blank tile
     noFill();
     noStroke();
     rect(

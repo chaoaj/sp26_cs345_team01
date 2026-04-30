@@ -5,7 +5,6 @@ const SoundManager = (() => {
     let currentMusic = null;
     let currentMusicName = null;
 
-    // NEW: persistent global volume
     let musicVolume = window.gameVolume ?? 1;
 
     function resolveSound(collection, nameOrSound) {
@@ -26,7 +25,6 @@ const SoundManager = (() => {
         return soundFile;
     }
 
-    // UPDATED: uses persistent musicVolume
     function playMusic(nameOrSound, volume = musicVolume) {
         const nextMusic = resolveSound(music, nameOrSound);
 
@@ -64,10 +62,9 @@ const SoundManager = (() => {
         if (currentMusic && !currentMusic.isPlaying()) currentMusic.play();
     }
 
-    // UPDATED: saves volume + applies it
     function setMusicVolume(volume) {
         musicVolume = volume;
-        window.gameVolume = volume; // persist globally
+        window.gameVolume = volume;
 
         if (currentMusic) {
             currentMusic.setVolume(volume);

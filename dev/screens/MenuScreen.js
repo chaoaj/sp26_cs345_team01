@@ -40,7 +40,6 @@ class MenuScreen extends Screen {
     imageMode(CORNER);
     image(this.mainMenuBg, 0, 0, width, height);
 
-    // Tree sway animation
     this.treeOffset += 0.01;
     this.leafOffset += 0.04;
     let treeWind = Math.sin(this.treeOffset) * 17;
@@ -67,7 +66,6 @@ class MenuScreen extends Screen {
       tree2H
     );
 
-    // Leaves drift
     image(
       this.leavesImg,
       leafWind - 20,
@@ -76,7 +74,6 @@ class MenuScreen extends Screen {
       height + 15
     );
 
-    // Animal bounce animation
     this.animalOffset += 0.03;
     let animalBounce = Math.sin(this.animalOffset) * this.animalBounceAmp;
     let animalDrift = Math.sin(this.animalOffset * 0.5) * 3;
@@ -95,7 +92,6 @@ class MenuScreen extends Screen {
       );
     }
 
-    // Logo
     imageMode(CENTER);
     image(
       this.wildSlideLogo,
@@ -105,7 +101,6 @@ class MenuScreen extends Screen {
       this.wildSlideLogo.height
     );
 
-    // Draw buttons
     this.startBtn.draw();
     this.settingsBtn.draw();
   }

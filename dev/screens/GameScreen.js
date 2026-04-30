@@ -15,7 +15,9 @@ class GameScreen extends Screen {
       level.grid,
       Assets.levelImages[level.id],
       150,
-      () => this.onPuzzleSolved()
+      () => this.onPuzzleSolved(),
+      level.rotateTiles ?? false,
+      level.rotateCount ?? 0
     );
   }
 
@@ -42,20 +44,33 @@ class GameScreen extends Screen {
   }
 
   keyPressed() {
-    // RIGHT SHIFT → return to menu
     if (keyCode === SHIFT && key === "Shift") {
       manager.switchTo("menu", true);
       return;
     }
 
-    // ENTER → skip level
     if (keyCode === ENTER) {
       manager.register("win", new WinScreen(this.timer, this.levelId + 1));
       manager.switchTo("win", true);
       return;
     }
 
-    // Normal puzzle controls
     this.puzzle.handleInput(key);
+  }
+
+  mousePressed() {
+    const offsetX = width / 2 - (this.puzzle.gridSize * this.puzzle.tileSize) / 2;
+    const offsetY = height / 2 - (this.puzzle.gridSize * this.puzzle.tileSize) / 2;
+
+    const mx = mouseX - offsetX;
+    const my = mouseY - offsetY;
+
+    if (
+      mx >= 0 && my >= 0 &&
+      mx < this.puzzle.gridSize * this.puzzle.tileSize &&
+      my < this.puzzle.gridSize * this.puzzle.tileSize
+    ) {
+      this.puzzle.mousePressed(mx, my);
+    }
   }
 }
