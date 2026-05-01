@@ -39,15 +39,17 @@ class MenuScreen extends Screen {
   draw() {
     imageMode(CORNER);
     image(this.mainMenuBg, 0, 0, width, height);
+
     this.treeOffset += 0.01;
     this.leafOffset += 0.04;
     let treeWind = Math.sin(this.treeOffset) * 17;
     let leafWind = Math.sin(this.leafOffset) * 10;
+
     let tree1W = this.tree1Img.width * this.treeScale;
     let tree1H = this.tree1Img.height * this.treeScale;
     let tree2W = this.tree2Img.width * this.treeScale;
     let tree2H = this.tree2Img.height * this.treeScale;
-    imageMode(CORNER);
+
     image(
       this.tree1Img,
       -70 + treeWind,
@@ -55,6 +57,7 @@ class MenuScreen extends Screen {
       tree1W,
       tree1H
     );
+
     image(
       this.tree2Img,
       width - tree2W + 70 + treeWind,
@@ -62,7 +65,7 @@ class MenuScreen extends Screen {
       tree2W,
       tree2H
     );
-    imageMode(CORNER);
+
     image(
       this.leavesImg,
       leafWind - 20,
@@ -70,14 +73,13 @@ class MenuScreen extends Screen {
       width + 35,
       height + 15
     );
-    this.animalOffset += 0.03;
 
+    this.animalOffset += 0.03;
     let animalBounce = Math.sin(this.animalOffset) * this.animalBounceAmp;
     let animalDrift = Math.sin(this.animalOffset * 0.5) * 3;
 
     if (this.animalsImg) {
       imageMode(CENTER);
-
       let animalW = this.animalsImg.width * this.animalScale;
       let animalH = this.animalsImg.height * this.animalScale;
 
@@ -89,6 +91,7 @@ class MenuScreen extends Screen {
         animalH
       );
     }
+
     imageMode(CENTER);
     image(
       this.wildSlideLogo,
@@ -97,9 +100,9 @@ class MenuScreen extends Screen {
       this.wildSlideLogo.width,
       this.wildSlideLogo.height
     );
-    this.startBtn.update();
-    this.settingsBtn.update();
 
+    this.startBtn.draw();
+    this.settingsBtn.draw();
   }
 
   keyPressed() {
@@ -117,6 +120,7 @@ class MenuScreen extends Screen {
 
     if (this.settingsBtn.isHovered()) {
       manager.switchTo("settings", true);
+      SoundManager.playSfx("testing", 0.5);
     }
   }
 }

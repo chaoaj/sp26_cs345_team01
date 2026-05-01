@@ -1,5 +1,6 @@
 function preload() {
   SoundManager.loadSfx("testing", "assets/sfxs/startsound.wav");
+  SoundManager.loadSfx("completion", "assets/sfxs/ahh.wav");
   SoundManager.loadMusic("bgmusic", "assets/bgmusic/testingbg.mp3");
   
   loadAssets();
