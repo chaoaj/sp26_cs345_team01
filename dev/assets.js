@@ -17,7 +17,14 @@ function loadAssets() {
   Assets.xBtn = loadImage('assets/ui-assets/xBtn.png');
   Assets.level1Btn = loadImage('assets/ui-assets/level1Btn.png');
   Assets.level2Btn = loadImage('assets/ui-assets/level2Btn.png');
-  Assets.level3Btn = loadImage('assets/ui-assets/level3Btn.png')
+  Assets.level3Btn = loadImage('assets/ui-assets/level3Btn.png');
+  Assets.level4Btn = loadImage('assets/ui-assets/level4Btn.png');
+  Assets.level5Btn = loadImage('assets/ui-assets/level5Btn.png');
+  Assets.level6Btn = loadImage('assets/ui-assets/level6Btn.png');
+  Assets.level7Btn = loadImage('assets/ui-assets/level7Btn.png');
+  Assets.level8Btn = loadImage('assets/ui-assets/level8Btn.png');
+  Assets.level9Btn = loadImage('assets/ui-assets/level9Btn.png');
+
 
   Assets.logoImg = loadImage('assets/decoratives/wildslidelogo2.png'); // LEFT OFF HERE
   Assets.backgroundImg = loadImage('assets/decoratives/background.png');

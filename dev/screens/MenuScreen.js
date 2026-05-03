@@ -115,10 +115,5 @@ class MenuScreen extends Screen {
     for (let btn of this.buttons) {
         btn.mousePressed();
     }
-
-    // if (this.settingsBtn.isHovered()) {
-    //   manager.switchTo("settings", true);
-    //   SoundManager.playSfx("testing", 0.5);
-    // }
   }
 }
