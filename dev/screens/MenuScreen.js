@@ -19,21 +19,17 @@ class MenuScreen extends Screen {
   onEnter() {
     console.log("Menu is now active");
 
-    this.startBtn = new Button(
-      width * 0.5,
-      height * 0.45,
-      246 * 0.9,
-      119 * 0.9,
-      Assets.playBtn
-    );
+    this.playBtn = new Button(
+			width * 0.5, height * 0.45, 246 * 0.9, 119 * 0.9, Assets.playBtn,
+      () => manager.switchTo("levels", true)
+		);
 
     this.settingsBtn = new Button(
-      width * 0.5,
-      height * 0.6,
-      236 * 0.9,
-      119 * 0.9,
-      Assets.settingsBtn
-    );
+			width * 0.5, height * 0.6, 236 * 0.9, 119 * 0.9, Assets.settingsBtn,
+      () => manager.switchTo("settings", true)	
+		);
+
+    this.buttons = [this.playBtn, this.settingsBtn];
   }
 
   draw() {
@@ -101,8 +97,11 @@ class MenuScreen extends Screen {
       this.wildSlideLogo.height
     );
 
-    this.startBtn.draw();
-    this.settingsBtn.draw();
+    // this.startBtn.update();
+    // this.settingsBtn.update();
+    for (let btn of this.buttons) {
+			btn.update();
+		}
   }
 
   keyPressed() {
@@ -113,14 +112,13 @@ class MenuScreen extends Screen {
   }
 
   mousePressed() {
-    if (this.startBtn.isHovered()) {
-      manager.switchTo("game1", true);
-      SoundManager.playSfx("testing", 0.5);
+    for (let btn of this.buttons) {
+        btn.mousePressed();
     }
 
-    if (this.settingsBtn.isHovered()) {
-      manager.switchTo("settings", true);
-      SoundManager.playSfx("testing", 0.5);
-    }
+    // if (this.settingsBtn.isHovered()) {
+    //   manager.switchTo("settings", true);
+    //   SoundManager.playSfx("testing", 0.5);
+    // }
   }
 }

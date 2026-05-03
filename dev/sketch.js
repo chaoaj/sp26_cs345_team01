@@ -11,6 +11,7 @@ function setup() {
   textFont("monospace");
 
   manager.register("menu", new MenuScreen());
+  manager.register("levels", new LevelScreen());
   manager.register("game1", new GameScreen(1));
   manager.register("game2", new GameScreen(2));
   manager.register("settings", new SettingsScreen());

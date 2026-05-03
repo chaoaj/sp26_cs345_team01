@@ -42,7 +42,7 @@ class WinScreen extends Screen {
     text(this.winTitle, width / 2, height / 2 - 80);
 
     textSize(20);
-    text("Time: " + this.playTime, width / 2, height / 2 + 80);
+    text("Time: " + this.playTime + "s", width / 2, height / 2 + 80);
 
     this.drawStars();
 

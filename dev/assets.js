@@ -15,10 +15,14 @@ function loadAssets() {
   Assets.playBtn = loadImage('assets/ui-assets/playbtn.png');
   Assets.settingsBtn = loadImage('assets/ui-assets/settingsbtn.png');
   Assets.xBtn = loadImage('assets/ui-assets/xBtn.png');
+  Assets.level1Btn = loadImage('assets/ui-assets/level1Btn.png');
+  Assets.level2Btn = loadImage('assets/ui-assets/level2Btn.png');
+  Assets.level3Btn = loadImage('assets/ui-assets/level3Btn.png')
 
   Assets.logoImg = loadImage('assets/decoratives/wildslidelogo2.png'); // LEFT OFF HERE
   Assets.backgroundImg = loadImage('assets/decoratives/background.png');
   Assets.gameBgImg = loadImage('assets/decoratives/gamebackground.png');
+  Assets.levelsBg = loadImage('assets/decoratives/levelsBg.png')
   Assets.tree1Img = loadImage('assets/decoratives/tree1.png');
   Assets.tree2Img = loadImage('assets/decoratives/tree2.png');
   Assets.leavesImg = loadImage('assets/decoratives/leaves.png');

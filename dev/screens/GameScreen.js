@@ -19,6 +19,14 @@ class GameScreen extends Screen {
       level.rotateTiles ?? false,
       level.rotateCount ?? 0
     );
+
+    this.xBtn = new Button(
+      40,
+      40,
+      252 * 0.3,
+      225 * 0.3,
+      Assets.xBtn
+    );
   }
 
   onPuzzleSolved() {
@@ -41,6 +49,8 @@ class GameScreen extends Screen {
     if (frameCount % 60 === 0) {
       this.timer++;
     }
+
+    this.xBtn.update();
   }
 
   keyPressed() {
@@ -72,5 +82,9 @@ class GameScreen extends Screen {
     ) {
       this.puzzle.mousePressed(mx, my);
     }
+
+    if (this.xBtn.isHovered()) {
+			manager.switchTo("levels", true);
+		}
   }
 }
