@@ -54,10 +54,6 @@ class GameScreen extends Screen {
   }
 
   keyPressed() {
-    if (keyCode === SHIFT && key === "Shift") {
-      manager.switchTo("menu", true);
-      return;
-    }
 
     if (keyCode === ENTER) {
       manager.register("win", new WinScreen(this.timer, this.levelId + 1));
@@ -84,7 +80,7 @@ class GameScreen extends Screen {
     }
 
     if (this.xBtn.isHovered()) {
-			manager.switchTo("levels", true);
-		}
+      manager.switchTo("levels", true);
+    }
   }
 }
