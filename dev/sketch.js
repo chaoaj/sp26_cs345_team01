@@ -14,7 +14,6 @@ function setup() {
   manager.register("levels", new LevelScreen());
   manager.register("game1", new GameScreen(1));
   manager.register("game2", new GameScreen(2));
-
   manager.register("game3", new GameScreen(3));
   manager.register("game4", new GameScreen(4));
   manager.register("game5", new GameScreen(5));

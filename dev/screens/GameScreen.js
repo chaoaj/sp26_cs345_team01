@@ -30,8 +30,16 @@ class GameScreen extends Screen {
   }
 
   onPuzzleSolved() {
+    if (this.levelId == 9) {
+      
+    }
     manager.register("win", new WinScreen(this.timer, this.levelId + 1));
     manager.switchTo("win", true);
+
+    if (this.nextLevel = false) {
+      manager.register("endScreen", new EndScreen());
+      manager.switchTo("endScreen", true);
+    }
   }
 
   draw() {
@@ -56,9 +64,10 @@ class GameScreen extends Screen {
   keyPressed() {
 
     if (keyCode === ENTER) {
-      manager.register("win", new WinScreen(this.timer, this.levelId + 1));
-      manager.switchTo("win", true);
-      return;
+      if (this.levelId + 1 > 9) {
+        manager.register("endScreen", new EndScreen());
+        manager.switchTo("endScreen", true);
+      }
     }
 
     this.puzzle.handleInput(key);
