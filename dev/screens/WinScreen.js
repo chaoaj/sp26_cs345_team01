@@ -13,7 +13,7 @@ class WinScreen extends Screen {
     this.button = createButton("Continue");
     this.button.mousePressed(() => {
       manager.register("game", new GameScreen(this.nextLevel));
-      manager.switchTo("game", true);
+      manager.switchTo("levels", true);
     });
   }
 

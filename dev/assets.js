@@ -24,6 +24,7 @@ function loadAssets() {
   Assets.level7Btn = loadImage('assets/ui-assets/level7Btn.png');
   Assets.level8Btn = loadImage('assets/ui-assets/level8Btn.png');
   Assets.level9Btn = loadImage('assets/ui-assets/level9Btn.png');
+  Assets.lockImg = loadImage('assets/ui-assets/lockImg.png');
 
 
   Assets.logoImg = loadImage('assets/decoratives/wildslidelogo2.png'); // LEFT OFF HERE

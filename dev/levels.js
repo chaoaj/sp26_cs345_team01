@@ -15,7 +15,7 @@ const Levels = [
     image: "assets/levels/level2.png",
     rotateTiles: true,
     rotateCount: 1,
-    nextLocked: true
+    isLocked: true
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const Levels = [
     image: "assets/levels/level3.png",
     rotateTiles: false,
     rotateCount: 0,
-    nextLocked: true
+    isLocked: true
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const Levels = [
     image: "assets/levels/level4.png",
     rotateTiles: true,
     rotateCount: 1,
-    nextLocked: true
+    isLocked: true
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const Levels = [
     image: "assets/levels/level5.png",
     rotateTiles: true,
     rotateCount: 3,
-    nextLocked: true
+    isLocked: true
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ const Levels = [
     image: "assets/levels/level6.png",
     rotateTiles: false,
     rotateCount: 0,
-    nextLocked: true
+    isLocked: true
   },
   {
     id: 7,
@@ -60,7 +60,7 @@ const Levels = [
     image: "assets/levels/level7.png",
     rotateTiles: true,
     rotateCount: 2,
-    nextLocked: true
+    isLocked: true
   },
   {
     id: 8,
@@ -69,7 +69,7 @@ const Levels = [
     image: "assets/levels/level8.png",
     rotateTiles: true,
     rotateCount: 5,
-    nextLocked: true
+    isLocked: true
   },
   {
     id: 9,
@@ -78,6 +78,6 @@ const Levels = [
     image: "assets/levels/level9.png",
     rotateTiles: true,
     rotateCount: 6,
-    nextLocked: true
+    isLocked: true
   }
 ];

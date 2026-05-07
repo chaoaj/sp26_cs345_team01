@@ -105,10 +105,10 @@ class MenuScreen extends Screen {
   }
 
   keyPressed() {
-    if (keyCode === ENTER) {
-      manager.switchTo("game1", true);
-      SoundManager.playSfx("testing", 0.5);
-    }
+    // if (keyCode === ENTER) {
+    //   manager.switchTo("game1", true);
+    //   SoundManager.playSfx("testing", 0.5);
+    // }
   }
 
   mousePressed() {
