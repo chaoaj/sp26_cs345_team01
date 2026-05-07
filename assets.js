@@ -15,10 +15,23 @@ function loadAssets() {
   Assets.playBtn = loadImage('assets/ui-assets/playbtn.png');
   Assets.settingsBtn = loadImage('assets/ui-assets/settingsbtn.png');
   Assets.xBtn = loadImage('assets/ui-assets/xBtn.png');
+  Assets.level1Btn = loadImage('assets/ui-assets/level1Btn.png');
+  Assets.level2Btn = loadImage('assets/ui-assets/level2Btn.png');
+  Assets.level3Btn = loadImage('assets/ui-assets/level3Btn.png');
+  Assets.level4Btn = loadImage('assets/ui-assets/level4Btn.png');
+  Assets.level5Btn = loadImage('assets/ui-assets/level5Btn.png');
+  Assets.level6Btn = loadImage('assets/ui-assets/level6Btn.png');
+  Assets.level7Btn = loadImage('assets/ui-assets/level7Btn.png');
+  Assets.level8Btn = loadImage('assets/ui-assets/level8Btn.png');
+  Assets.level9Btn = loadImage('assets/ui-assets/level9Btn.png');
+  Assets.lockImg = loadImage('assets/ui-assets/lockImg.png');
+
 
   Assets.logoImg = loadImage('assets/decoratives/wildslidelogo2.png'); // LEFT OFF HERE
   Assets.backgroundImg = loadImage('assets/decoratives/background.png');
   Assets.gameBgImg = loadImage('assets/decoratives/gamebackground.png');
+  Assets.levelsBg = loadImage('assets/decoratives/levelsBg.png');
+  Assets.endBg = loadImage('assets/decoratives/endBg.png');
   Assets.tree1Img = loadImage('assets/decoratives/tree1.png');
   Assets.tree2Img = loadImage('assets/decoratives/tree2.png');
   Assets.leavesImg = loadImage('assets/decoratives/leaves.png');

@@ -13,7 +13,7 @@ class WinScreen extends Screen {
     this.button = createButton("Continue");
     this.button.mousePressed(() => {
       manager.register("game", new GameScreen(this.nextLevel));
-      manager.switchTo("game", true);
+      manager.switchTo("levels", true);
     });
   }
 
@@ -42,7 +42,7 @@ class WinScreen extends Screen {
     text(this.winTitle, width / 2, height / 2 - 80);
 
     textSize(20);
-    text("Time: " + this.playTime, width / 2, height / 2 + 80);
+    text("Time: " + this.playTime + "s", width / 2, height / 2 + 80);
 
     this.drawStars();
 

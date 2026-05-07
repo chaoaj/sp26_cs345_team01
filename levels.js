@@ -5,7 +5,8 @@ const Levels = [
     grid: 2,
     image: "assets/levels/level1.png",
     rotateTiles: false,
-    rotateCount: 0
+    rotateCount: 0,
+    
   },
   {
     id: 2,
@@ -13,7 +14,8 @@ const Levels = [
     grid: 2,
     image: "assets/levels/level2.png",
     rotateTiles: true,
-    rotateCount: 1
+    rotateCount: 1,
+    isLocked: true
   },
   {
     id: 3,
@@ -21,7 +23,8 @@ const Levels = [
     grid: 3,
     image: "assets/levels/level3.png",
     rotateTiles: false,
-    rotateCount: 0
+    rotateCount: 0,
+    isLocked: true
   },
   {
     id: 4,
@@ -29,7 +32,8 @@ const Levels = [
     grid: 3,
     image: "assets/levels/level4.png",
     rotateTiles: true,
-    rotateCount: 1
+    rotateCount: 1,
+    isLocked: true
   },
   {
     id: 5,
@@ -37,7 +41,8 @@ const Levels = [
     grid: 3,
     image: "assets/levels/level5.png",
     rotateTiles: true,
-    rotateCount: 3
+    rotateCount: 3,
+    isLocked: true
   },
   {
     id: 6,
@@ -45,7 +50,8 @@ const Levels = [
     grid: 4,
     image: "assets/levels/level6.png",
     rotateTiles: false,
-    rotateCount: 0
+    rotateCount: 0,
+    isLocked: true
   },
   {
     id: 7,
@@ -53,7 +59,8 @@ const Levels = [
     grid: 4,
     image: "assets/levels/level7.png",
     rotateTiles: true,
-    rotateCount: 2
+    rotateCount: 2,
+    isLocked: true
   },
   {
     id: 8,
@@ -61,7 +68,8 @@ const Levels = [
     grid: 4,
     image: "assets/levels/level8.png",
     rotateTiles: true,
-    rotateCount: 5
+    rotateCount: 5,
+    isLocked: true
   },
   {
     id: 9,
@@ -69,6 +77,7 @@ const Levels = [
     grid: 5,
     image: "assets/levels/level9.png",
     rotateTiles: true,
-    rotateCount: 6
+    rotateCount: 6,
+    isLocked: true
   }
 ];

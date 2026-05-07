@@ -19,9 +19,23 @@ class GameScreen extends Screen {
       level.rotateTiles ?? false,
       level.rotateCount ?? 0
     );
+
+    this.xBtn = new Button(
+      40,
+      40,
+      252 * 0.3,
+      225 * 0.3,
+      Assets.xBtn
+    );
   }
 
   onPuzzleSolved() {
+    Levels[this.levelId].isLocked = false;
+
+    if (this.levelId + 1 > 9) {
+      manager.register("endScreen", new EndScreen());
+      manager.switchTo("endScreen", true);
+    }
     manager.register("win", new WinScreen(this.timer, this.levelId + 1));
     manager.switchTo("win", true);
   }
@@ -41,20 +55,20 @@ class GameScreen extends Screen {
     if (frameCount % 60 === 0) {
       this.timer++;
     }
+
+    this.xBtn.update();
   }
 
   keyPressed() {
-    if (keyCode === SHIFT && key === "Shift") {
-      manager.switchTo("menu", true);
-      return;
-    }
-
+    //Levels[this.levelId].isLocked = false;
     if (keyCode === ENTER) {
       manager.register("win", new WinScreen(this.timer, this.levelId + 1));
       manager.switchTo("win", true);
-      return;
+      if (this.levelId + 1 > 9) {
+        manager.register("endScreen", new EndScreen());
+        manager.switchTo("endScreen", true);
+      }
     }
-
     this.puzzle.handleInput(key);
   }
 
@@ -71,6 +85,10 @@ class GameScreen extends Screen {
       my < this.puzzle.gridSize * this.puzzle.tileSize
     ) {
       this.puzzle.mousePressed(mx, my);
+    }
+
+    if (this.xBtn.isHovered()) {
+      manager.switchTo("levels", true);
     }
   }
 }

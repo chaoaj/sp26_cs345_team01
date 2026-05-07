@@ -1,5 +1,5 @@
 class Button {
-  constructor(x, y, w, h, img) {
+  constructor(x, y, w, h, img, onClick = null) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -7,6 +7,7 @@ class Button {
     this.img = img;
     this.maxW = w + 10;
     this.maxH = h + 10;
+    this.onClick = onClick;
   }
 
   update() {
@@ -22,6 +23,7 @@ class Button {
   draw() {
     imageMode(CENTER);
     image(this.img, this.x, this.y, this.w, this.h);
+    // image(this.img, this.x, this.y)
   }
 
   isHovered() {
@@ -29,6 +31,18 @@ class Button {
       mouseX < this.x + this.w / 2 &&
       mouseY > this.y - this.h / 2 &&
       mouseY < this.y + this.h / 2)      
+  }
+
+  mousePressed() {
+    // if (this.isHovered()) {
+    //   //this.onClick();
+    //   manager.switchTo(onClick, true);
+    // }
+    // manager.switchTo(this.onClick, true);
+
+    if (this.isHovered() && this.onClick) {
+      this.onClick();
+    }
   }
 
   growBtn() {
