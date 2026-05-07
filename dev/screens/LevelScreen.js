@@ -95,10 +95,10 @@ class LevelScreen extends Screen {
 	}
 
 	keyPressed() {
-		// if (keyCode === ENTER) {
-		// 	Levels.forEach(level => level.isLocked = false);
-		// 	console.log("Cheat activated: All levels unlocked!");
-		// 	manager.switchTo("levels", true);
-		// }
+		if (keyCode === ENTER) {
+			Levels.forEach(level => level.isLocked = false);
+			console.log("All levels unlocked!");
+			manager.switchTo("levels", true);
+		}
 	}
 }
