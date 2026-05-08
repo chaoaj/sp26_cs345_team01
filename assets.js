@@ -39,6 +39,12 @@ function loadAssets() {
   Assets.stars3 = loadImage('assets/decoratives/stars3.png');
   Assets.stars2 = loadImage('assets/decoratives/stars2.png');
   Assets.stars1 = loadImage('assets/decoratives/stars1.png');
+  Assets.floor = loadImage('assets/decoratives/floor.png');
+  Assets.leaves2 = loadImage('assets/decoratives/leaves2.png');
+  Assets.levelBackground = loadImage('assets/decoratives/levelbackground.png');
+  Assets.monkey = loadImage('assets/decoratives/monkey.png');
+  Assets.tree = loadImage('assets/decoratives/tree.png');
+  Assets.winBg = loadImage('assets/decoratives/winBg.png');
 
   Levels.forEach(level => {
     Assets.levelImages[level.id] = loadImage(level.image);
